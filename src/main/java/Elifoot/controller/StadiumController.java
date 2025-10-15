@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("club/")
+@RequestMapping("stadium")
 @RequiredArgsConstructor
 public class StadiumController {
 
@@ -27,7 +27,7 @@ public class StadiumController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<StadiumResponse> findById(@PathVariable Long id){
         StadiumResponse response = findStadiumService.findById(id);
         return ResponseEntity.ok(response);
