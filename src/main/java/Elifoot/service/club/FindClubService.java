@@ -1,5 +1,6 @@
 package Elifoot.service.club;
 
+import Elifoot.domain.Club;
 import Elifoot.exeptions.ResourceNotFoundException;
 import Elifoot.mapper.ClubMapper;
 import Elifoot.repository.ClubRepository;
@@ -28,5 +29,12 @@ public class FindClubService {
                 .orElseThrow(
                 () -> new ResourceNotFoundException("Club not found")
         );
+    }
+
+    public Club findClubById(Long id){
+        return repository.findById(id)
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("Club not found")
+                );
     }
 }

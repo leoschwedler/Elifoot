@@ -16,6 +16,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+        default_schema: elifoot
 
   flyway:
     enabled: true
+    default-schema: elifoot
+

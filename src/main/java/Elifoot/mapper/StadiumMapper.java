@@ -22,6 +22,7 @@ public class StadiumMapper {
         return Stadium.builder()
                 .name(request.getName())
                 .city(request.getCity())
+
                 .capacity(request.getCapacity())
                 .urlImg(request.getUrlImg())
                 .build();
