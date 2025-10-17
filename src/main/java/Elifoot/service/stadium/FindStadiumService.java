@@ -1,5 +1,6 @@
 package Elifoot.service.stadium;
 
+import Elifoot.domain.Stadium;
 import Elifoot.exeptions.ResourceNotFoundException;
 import Elifoot.mapper.StadiumMapper;
 import Elifoot.repository.StadiumRepository;
@@ -23,6 +24,12 @@ public class FindStadiumService {
     public StadiumResponse findById(Long id){
         return repository.findById(id)
                 .map(StadiumMapper::toResponse)
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("Stadium not found with id:" + id));
+    }
+
+    public Stadium findStadiumById(Long id){
+        return repository.findById(id)
                 .orElseThrow(
                         () -> new ResourceNotFoundException("Stadium not found with id:" + id));
     }
