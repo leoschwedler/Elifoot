@@ -1,5 +1,7 @@
 package Elifoot.controller;
 
+import Elifoot.config.security.annotations.CanReadPlayer;
+import Elifoot.config.security.annotations.CanWritePlayer;
 import Elifoot.request.CreatePlayerRequest;
 import Elifoot.response.PlayerDetailResponse;
 import Elifoot.response.PlayerResponse;
@@ -23,18 +25,21 @@ public class PlayerController {
     private final FindPlayerService findPlayerService;
     private final CreatePlayerService createPlayerService;
 
+    @CanWritePlayer
     @PostMapping
     public ResponseEntity<PlayerDetailResponse> create(@RequestBody CreatePlayerRequest request){
         PlayerDetailResponse response = createPlayerService.execute(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @CanReadPlayer
     @GetMapping
     public ResponseEntity<Page<PlayerResponse>> findAll(Pageable pageable){
         Page<PlayerResponse> response = findPlayerService.findAll(pageable);
         return ResponseEntity.ok(response);
     }
 
+    @CanReadPlayer
     @GetMapping("/{id}")
     public ResponseEntity<PlayerDetailResponse> findAById(@PathVariable long id){
         PlayerDetailResponse response = findPlayerService.findById(id);
