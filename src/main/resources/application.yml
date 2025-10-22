@@ -22,3 +22,9 @@ spring:
     enabled: true
     default-schema: elifoot
 
+jwt:
+  public:
+    key: classpath:authz.pub
+  private:
+    key: classpath:authz.pem
+
